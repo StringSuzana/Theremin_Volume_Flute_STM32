@@ -1,0 +1,17 @@
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:71:6:NMI_Handler	4	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:86:6:HardFault_Handler	4	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:101:6:MemManage_Handler	4	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:116:6:BusFault_Handler	4	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:131:6:UsageFault_Handler	4	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:146:6:SVC_Handler	4	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:159:6:DebugMon_Handler	4	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:172:6:PendSV_Handler	4	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:185:6:SysTick_Handler	8	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:206:6:RCC_IRQHandler	4	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:219:6:USB_HP_CAN1_TX_IRQHandler	8	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:233:6:USB_LP_CAN1_RX0_IRQHandler	8	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:247:6:TIM1_BRK_IRQHandler	8	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:261:6:TIM1_UP_IRQHandler	8	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:275:6:TIM1_TRG_COM_IRQHandler	8	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:289:6:TIM1_CC_IRQHandler	8	static
+C:/Users/Suz/STM32/volume_stm/Core/Src/stm32f1xx_it.c:303:6:TIM2_IRQHandler	8	static
