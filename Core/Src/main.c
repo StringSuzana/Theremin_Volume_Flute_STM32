@@ -28,9 +28,10 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-typedef enum vol_servo_position {
-	POS_PLAY_1 = 25, POS_PLAY_2 = 28, POS_PLAY_3 = 31, POS_SILENCE = 40
-} VOL_SERVO_POSITION;
+const uint32_t POS_PLAY_1 = 25;
+const uint32_t POS_PLAY_2 = 28;
+const uint32_t POS_PLAY_3 = 31;
+const uint32_t POS_SILENCE = 40;
 
 /* USER CODE END PTD */
 
@@ -65,11 +66,11 @@ uint8_t vol_finished_one_measurement = 0;
 const char *vol_timers[3] = { "HTIM_1", "HTIM_2", "WRONG" };
 uint8_t vol_current_timer = 0;
 
-const uint32_t VOL_LOWEST_FREQUENCY = 10000; //10 kHz
+const uint32_t VOL_LOWEST_FREQUENCY = 6000; //6 kHz
 
 uint32_t vol_value = { 0 };
 
-VOL_SERVO_POSITION current_pos = POS_SILENCE;
+uint32_t current_pos = POS_SILENCE;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -81,7 +82,7 @@ static void MX_TIM1_Init(void);
 void vol_calibrate_antenna();
 BOOLEAN vol_is_in_range(int lower_limit, int upper_limit, int number);
 void vol_play();
-void vol_play_hw(VOL_SERVO_POSITION vol_position);
+void vol_play_hw(uint32_t vol_position);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -136,18 +137,18 @@ int main(void) {
 	while (1) {
 
 		//If switch is in calibrating position, then calibrate antenna.
-		if (HAL_GPIO_ReadPin(B12_SWITCH_GPIO_Port, B12_SWITCH_Pin)
-				== GPIO_PIN_SET) {
-			vol_calibrate_antenna();
+		/*if (HAL_GPIO_ReadPin(B12_SWITCH_GPIO_Port, B12_SWITCH_Pin)
+		 == GPIO_PIN_SET) {
+		 vol_calibrate_antenna();
+		 }
+		 //Play instrument
+		 else {*/
+		HAL_GPIO_WritePin(GPIOB, B14_GREEN_VOL_LED_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, B13_RED_VOL_LED_Pin, GPIO_PIN_RESET);
+		if (vol_finished_one_measurement == 1) {
+			vol_play();
 		}
-		//Play instrument
-		else {
-			HAL_GPIO_WritePin(GPIOB, B14_GREEN_VOL_LED_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, B13_RED_VOL_LED_Pin, GPIO_PIN_RESET);
-			if (vol_finished_one_measurement == 1) {
-				vol_play();
-			}
-		}
+		//}
 
 		/* USER CODE END WHILE */
 
@@ -376,7 +377,7 @@ void vol_calibrate_antenna() {
 BOOLEAN is_in_range(int lower_limit, int upper_limit, int number) {
 	return (lower_limit <= number && number <= upper_limit);
 }
-void vol_play_hw(VOL_SERVO_POSITION vol_position) {
+void vol_play_hw(uint32_t vol_position) {
 	htim2.Instance->CCR1 = vol_position;
 }
 void vol_play() {
